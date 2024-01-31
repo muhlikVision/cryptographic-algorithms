@@ -1,0 +1,31 @@
+
+Elliptic Curve Diffie-Hellman (ECDH) MATLAB Code Explanation:
+
+1. Function Definition:
+   - ECC_DiffieHellman(): The main function for performing the Elliptic Curve Diffie-Hellman key exchange.
+
+2. Define Elliptic Curve Parameters:
+   - a, b: Coefficients of the elliptic curve equation y^2 = x^3 + ax + b.
+   - p: A prime number, defining the finite field over which the curve is defined.
+   - G: A generator point on the curve, represented as [G_x, G_y].
+
+3. Private and Public Key Generation for Alice and Bob:
+   - n_Alice and n_Bob: Randomly generated private keys for Alice and Bob, respectively.
+   - P_Alice and P_Bob: Public keys for Alice and Bob, calculated by multiplying the generator point G with their private keys.
+
+4. Elliptic Curve Point Multiplication Function (elliptic_curve_multiply):
+   - This function multiplies an elliptic curve point by a scalar (the private key) using the double-and-add method.
+
+5. Shared Key Computation:
+   - Both Alice and Bob compute the shared key by multiplying their private key with the other party's public key. The resulting shared keys (shared_key_A and shared_key_B) should be the same.
+
+6. Displaying the Keys:
+   - The shared keys computed by Alice and Bob are displayed.
+
+7. Elliptic Curve Point Addition Function (EllipticCurve_Add):
+   - This function adds two points on the elliptic curve, handling different cases like point doubling and adding the point at infinity.
+
+8. Modular Inverse Function (modInverse):
+   - Used for computing the modular inverse, which is essential in the point addition and doubling operations on the elliptic curve.
+
+This MATLAB implementation provides a basic demonstration of the ECDH key exchange using elliptic curves. It is designed for educational purposes and not for real-world cryptographic use.

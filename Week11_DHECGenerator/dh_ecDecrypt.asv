@@ -1,0 +1,46 @@
+function dh_ecDecrypt()
+    % Read the encrypted message from the file
+    encryptedFilename = 'dh_ecOutput.txt';
+    encryptedFileID = fopen(encryptedFilename, 'r');
+    if encryptedFileID == -1
+        error('Could not open encrypted message file: %s', encryptedFilename);
+    end
+    encryptedMessage = fscanf(encryptedFileID, '%d');
+    fclose(encryptedFileID);
+
+    % Read the shared key from the file
+    keyFilename = 'dh_ecSharedKey.txt';
+    keyFileID = fopen(keyFilename, 'r');
+    if keyFileID == -1
+        error('Could not open shared key file: %s', keyFilename);
+    end
+    
+    % Read the shared key from the file
+    keyFilename = 'dh_ecSharedKey.txt';
+    keyFileID = fopen(keyFilename, 'r');
+    if keyFileID == -1
+        error('Could not open shared key file: %s', keyFilename);
+    end
+
+    % Read the shared key as a scalar value
+    sharedKey = fscanf(keyFileID, '%d');
+    fclose(keyFileID);
+
+    
+    % Check if there's more than one value
+    if numel(sharedKeyValues) ~= 1
+        error('Shared key must be a scalar value.');
+    end
+    
+    % Extract the scalar value from the array
+    sharedKey = sharedKeyValues(1);
+
+    % Bob decrypts the message using the shared key
+    decryptedMessageNum = eccEncryptDecrypt(encryptedMessage, sharedKey);
+    
+    % Convert the decrypted message numbers to characters
+    decryptedMessage = char(decryptedMessageNum');
+    
+    % Display the decrypted message
+    fprintf('Decrypted Message: %s\n', decryptedMessage);
+end

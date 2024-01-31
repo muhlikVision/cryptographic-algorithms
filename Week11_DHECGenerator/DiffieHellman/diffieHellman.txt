@@ -1,0 +1,28 @@
+Diffie-Hellman MATLAB Code Explanation:
+
+1. Initialization and User Interface:
+   - clc: Clears the command window.
+   - disp('Diffie Hellman Key Exchange'): Displays the title of the process.
+   - clear, close all: Clears variables from the workspace and closes any open figures.
+
+2. Input for g and p:
+   - The script prompts the user to input two values: g and p.
+   - isprime(g) and isprime(p): Checks whether g and p are prime numbers.
+   - If either g or p is not prime, it notifies the user and asks for the input again.
+
+3. Generating Private Keys (xa and xb):
+   - xa and xb are randomly generated as private keys for two parties (say, Alice and Bob) using randi([1 p-1]). These are kept secret by each party.
+
+4. Computing Public Keys (ya and yb):
+   - The public keys are calculated using the formula y = g^x mod p, where x is the private key.
+   - ya and yb are computed using power(g, xa) and power(g, xb) respectively, then applying modulo p.
+
+5. Calculating the Shared Secret Key:
+   - Both parties compute the shared secret key using the other party's public key and their own private key.
+   - Alice computes ha = yb^xa mod p, and Bob computes hb = ya^xb mod p.
+   - Due to the properties of modular exponentiation, ha and hb will be the same, thus establishing a shared secret key.
+
+6. Displaying Results:
+   - The values of Xa, Xb, Ya, Yb, Shared Key A, and Shared Key B are displayed. Shared Key A and Shared Key B should be the same, showing that the key exchange was successful.
+
+Overall, this script demonstrates how two parties can securely agree on a shared secret over an insecure channel using the Diffie-Hellman algorithm. The shared secret key can then be used for encrypting subsequent communications.
