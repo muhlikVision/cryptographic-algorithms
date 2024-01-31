@@ -1,0 +1,1 @@
+Run the menu file and add all the folders in the path to run them each one by one (NOT together, only the one you want to run, add it to the path, this is because each folder has separate TXT files for unit testing).
